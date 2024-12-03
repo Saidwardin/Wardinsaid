@@ -1,0 +1,144 @@
+# Create the HTML file for the e-commerce website
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر إلكتروني</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">متجري</div>
+    <nav>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">المنتجات</a></li>
+        <li><a href="#">السلة</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="products">
+      <div class="product">
+        <img src="product1.jpg" alt="منتج 1">
+        <h3>اسم المنتج</h3>
+        <p>وصف المنتج</p>
+        <span>السعر: 100 درهم</span>
+        <button class="add-to-cart">إضافة إلى السلة</button>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2024 جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+"""
+
+# Create the CSS file for styling the e-commerce website
+css_content = """
+/* ملف styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.add-to-cart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+"""
+
+# Create the JavaScript file for basic interactivity
+js_content = """
+// ملف script.js
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    alert('تمت إضافة المنتج إلى السلة!');
+  });
+});
+"""
+
+# Write the files to a zip folder
+import zipfile
+
+output_path = "/mnt/data/ecommerce_website.zip"
+
+with zipfile.ZipFile(output_path, 'w') as zipf:
+    zipf.writestr("index.html", html_content)
+    zipf.writestr("styles.css", css_content)
+    zipf.writestr("script.js", js_content)
+
+output_path
